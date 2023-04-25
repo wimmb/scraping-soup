@@ -22,14 +22,14 @@ class ScrapeMoviesService:
 
         results = []
         for i in range(len(poster_tags)):
-            poster_img = self.parse_poster_image(tag=poster_tags[i])
+            post_image = self.parse_poster_image(tag=poster_tags[i])
             title = self.parse_title(tag=title_tags[i])
             year = self.parse_year(tag=title_tags[i])
             rating = self.parse_rating(tag=rating_tags[i])
 
             results.append(
                 {
-                    'poster_image':poster_img,
+                    'post_image':post_image,
                     'title':title,
                     'year':year,
                     'rating':rating
