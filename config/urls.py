@@ -21,5 +21,6 @@ from core.views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
-    path('', include('movies.urls'))
+    path('', include('movies.urls')),
+    path('', include('tv_shows.urls'))
 ]
