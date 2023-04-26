@@ -3,7 +3,7 @@ from pathlib import Path
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-import config
+import configs
 
 
 class ScrapeMoviesService:
@@ -105,7 +105,7 @@ if __name__ == '__main__':
 
     df = pd.DataFrame.from_dict(top_movies)
 
-    output_file_path = Path(config.basedir) / 'movies.csv'
+    output_file_path = Path(configs.basedir) / 'movies.csv'
     df.to_csv(output_file_path)
 
     # tv shows
@@ -114,5 +114,5 @@ if __name__ == '__main__':
 
     df = pd.DataFrame.from_dict(tv_shows)
 
-    output_file_path = Path(config.basedir) / 'tv_shows.csv'
+    output_file_path = Path(configs.basedir) / 'tv_shows.csv'
     df.to_csv(output_file_path)
