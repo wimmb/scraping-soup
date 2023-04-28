@@ -7,7 +7,7 @@ from tv_shows.models import TvShows
 def index(request):
 
     services_m = ScrapeMoviesService()
-    top_movies = services_m.get_top_movies()
+    top_movies = services_m.get_tops()
 
     # top_movies = []
     for top_movie in top_movies:
@@ -34,7 +34,7 @@ def index(request):
             movie.save()
 
     services_tv = ScrapeTvShowsService()
-    tv_shows = services_tv.get_tv_shows()
+    tv_shows = services_tv.get_tops()
 
     # tv_shows = []
     for tv_show in tv_shows:
