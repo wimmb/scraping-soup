@@ -46,7 +46,7 @@ class ScrapeMoviesService:
         return tag.find('a').text
 
     def parse_year(self, tag):
-        return int(tag.find('span').text.lstrip('(').rstrip(')').strip())
+        return int(tag.find('span', class_="secondaryInfo").text.lstrip('(').rstrip(')').strip())
 
     def parse_rating(self, tag):
         rating = tag.find('strong')
@@ -59,9 +59,6 @@ class ScrapeTvShowsService(ScrapeMoviesService):
 
     url = 'https://www.imdb.com/chart/tvmeter'
     parser_count = 100
-
-    def parse_year(self, tag):
-        return int(tag.find('span', class_="secondaryInfo").text.lstrip('(').rstrip(')').strip())
 
 
 if __name__ == '__main__':
