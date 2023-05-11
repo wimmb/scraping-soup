@@ -6,10 +6,10 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card border-0 shadow">
-                <div class="card-body">
+                <div class="card-body text-center">
                     <h4 class="card-title mt-2 mb-3">Scraping menu</h4>
-                    <button id="scrape_movies_btn" class="btn btn-dark">Download Movies</button>
-                    <button id="scrape_tv_shows_btn" class="btn btn-dark">Download TV Shows</button>
+                    <button id="scrape_movies_btn" data-url="{% url 'scrape_movies' %}?category=movies" class="btn btn-dark btn-scrape">Download Movies</button>
+                    <button id="scrape_tv_shows_btn" data-url="{% url 'scrape_tv_shows' %}?category=tv_shows" class="btn btn-dark btn-scrape">Download TV Shows</button>
                 </div>
             </div>
         </div>

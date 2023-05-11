@@ -1,67 +1,21 @@
 from django.shortcuts import render
-from services import ScrapeMoviesService, ScrapeTvShowsService
-from movies.models import Movie
-from tv_shows.models import TvShows
+
+from services import IMDBService
+from django.http import JsonResponse
 
 
 def index(request):
-
-    services_m = ScrapeMoviesService()
-    top_movies = services_m.get_tops()
-
-    # top_movies = []
-    for top_movie in top_movies:
-        movie = (
-            Movie.objects
-            .filter(
-                title=top_movie.get('title'),
-                year=top_movie.get('year')
-            )
-            .first()
-        )
-
-        if movie:
-            movie.post_image = top_movie.get('post_image')
-            movie.rating = top_movie.get('rating')
-            movie.save()
-        else:
-            movie = Movie(
-                post_image=top_movie.get('post_image'),
-                title=top_movie.get('title'),
-                year=top_movie.get('year'),
-                rating=top_movie.get('rating')
-            )
-            movie.save()
-
-    services_tv = ScrapeTvShowsService()
-    tv_shows = services_tv.get_tops()
-
-    # tv_shows = []
-    for tv_show in tv_shows:
-        show = (
-            TvShows.objects
-            .filter(
-                title=tv_show.get('title'),
-                year=tv_show.get('year')
-            )
-            .first()
-        )
-
-        if show:
-            show.post_image = tv_show.get('post_image')
-            show.rating = tv_show.get('rating')
-            show.save()
-        else:
-            show = TvShows(
-                post_image=tv_show.get('post_image'),
-                title=tv_show.get('title'),
-                year=tv_show.get('year'),
-                rating=tv_show.get('rating')
-            )
-            show.save()
 
     context = {
         'active_page': 'home'
     }
 
     return render(request, 'core/index.html', context=context)
+
+
+def scrape_data(request):
+    category = request.GET['category']
+    service = IMDBService.get_service(category=category)
+    objects = service.get_objects()
+    data = service.persist_objects(objects)
+    return JsonResponse({'data': data})

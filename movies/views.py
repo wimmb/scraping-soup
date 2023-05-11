@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Movie
+from movies.models import Movie
 
 
 def top_movies(request):

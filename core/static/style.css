@@ -23,15 +23,6 @@ a:hover {
     color: #ffffff;
 }
 
-/*.btn-black {
-    background: #333333;
-    color: #ffffff;
-    padding: 0.375rem 1.5rem;
+.btn-scrape {
+    margin: 0 10px 10px;
 }
-
-.btn-black:hover,
-.btn-black:focus,
-.btn-black:active {
-    background: #dddddd;
-    color: #333333;
-}*/
