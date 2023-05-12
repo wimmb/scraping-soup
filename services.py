@@ -4,9 +4,9 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 import configs
-from movies.models import Movie
 from django.forms.models import model_to_dict
 
+from movies.models import Movie
 from tv_shows.models import TvShows
 
 
@@ -143,6 +143,12 @@ class ScrapeTvShowsService(IMDBService):
             tv_shows.append(model_to_dict(show))
         return tv_shows
 
+
+# add to head this lines
+# import os
+# import django
+# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
+# django.setup()
 
 if __name__ == '__main__':
     # top movies

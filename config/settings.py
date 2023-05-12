@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     'core',
     'movies',
-    'tv_shows'
+    'tv_shows',
 ]
 
 MIDDLEWARE = [
